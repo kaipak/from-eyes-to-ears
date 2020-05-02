@@ -2,5 +2,5 @@ torch==1.4
 torchvision==0.5
 cython
 pyyaml==5.1
--e git://github.com/cocodataset/cocoapi.git#subdirectory=PythonAPI
+-e git+http://github.com/cocodataset/cocoapi.git#subdirectory=PythonAPI
 detectron2
