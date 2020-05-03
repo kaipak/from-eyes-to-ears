@@ -1,3 +1,4 @@
+import sounddevice
 from sound_maker import SoundMaker
 
 sq = SoundMaker(True)

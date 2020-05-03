@@ -1,5 +1,4 @@
 from lxml import html
-import sounddevice as sd
 import soundfile as sf
 import requests
 import urllib.request
@@ -7,6 +6,11 @@ from pydub import AudioSegment
 import time
 import numpy as np
 import os
+import sys
+from pprint import pprint
+
+if 'sounddevice' in sys.modules:
+    import sounddevice
 
 class SoundMaker:
     URL = "http://soundbible.com/suggest.php"
@@ -64,8 +68,11 @@ class SoundMaker:
             render = render if os.path.exists(render) and gcount > 1 else None
             if self.autoplay and render is not None:
                 data, fs = sf.read(render, dtype='float32')
-                sd.play(data, fs)
-                status = sd.wait()
+                if 'sounddevice' not in sys.modules:
+                    print("Sound Device not imported, skipping playback.  Make sure to import like: 'import sounddevice'")
+                else:
+                    sounddevice.play(data, fs)
+                    status = sounddevice.wait()
     
         return (allsounds, render)
     
