@@ -1,12 +1,15 @@
 *.jpg
 *.png
 *.diff
+*.wav
 
 # compilation and distribution
 __pycache__
 _ext
 *.pyc
 *.so
+
+sound_files/
 
 # pytorch/python/numpy formats
 *.pth

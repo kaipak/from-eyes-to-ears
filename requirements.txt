@@ -4,3 +4,8 @@ cython
 pyyaml==5.1
 git+https://github.com/cocodataset/cocoapi.git#subdirectory=PythonAPI
 detectron2
+lxml
+sounddevice
+soundfile
+requests
+pydub
