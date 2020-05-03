@@ -9,4 +9,4 @@ def upload_file():
     list_of_files = glob.glob('./*') # * means all if need specific format then *.csv
     img_file = max(list_of_files, key=os.path.getctime)
     img = cvs.imread(img_file)
-    return (img, img_file)
+    return img, img_file
