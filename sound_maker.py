@@ -8,7 +8,7 @@ import time
 import numpy as np
 import os
 
-class SoundQuery: 
+class SoundMaker:
     URL = "http://soundbible.com/suggest.php"
     DIR = "./sound_files"
     autoplay=False

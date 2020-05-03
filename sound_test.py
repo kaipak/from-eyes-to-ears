@@ -1,6 +1,6 @@
-from sound_queryer import SoundQuery
+from sound_maker import SoundMaker
 
-sq = SoundQuery(True)
+sq = SoundMaker(True)
 # Play sequentially car (Volume 3) then door (Volume 5)
 print(
     sq.playsounds({
@@ -16,7 +16,7 @@ print(
     }, 4, True)
 )
 
-sq = SoundQuery(False)
+sq = SoundMaker(False)
 # Play overlay 4 Cats at Volume 8
 print(
     sq.playsounds({
