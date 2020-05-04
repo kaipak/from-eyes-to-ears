@@ -19,6 +19,7 @@ class BlendPredictor:
     def _merge_metadata(self):
         added_classes = self.mask_md.get('thing_classes')
         total_classes = self.po_md.get('thing_classes').copy()
+        stuff_classes = self.po_md.get('stuff_classes')
 
         self.offset = len(total_classes)
 
@@ -28,7 +29,7 @@ class BlendPredictor:
             else:
                 total_classes.append(f"custom_{c}")
 
-        self.blend_md = Metadata(thing_classes=total_classes, stuff_classes=self.po_md.get("stuff_classes"))
+        self.blend_md = Metadata(thing_classes=total_classes, stuff_classes=stuff_classes)
 
     def predict(self, img):
         # First lets run the predictions
