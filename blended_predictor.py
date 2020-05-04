@@ -28,7 +28,7 @@ class BlendPredictor:
             else:
                 total_classes.append(f"custom_{c}")
 
-        self.blend_md = Metadata(thing_classes=total_classes, stuff_classes=po_md.get("stuff_classes"))
+        self.blend_md = Metadata(thing_classes=total_classes, stuff_classes=self.po_md.get("stuff_classes"))
 
     def predict(self, img):
         # First lets run the predictions
