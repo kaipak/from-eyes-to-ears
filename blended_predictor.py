@@ -1,5 +1,6 @@
 import torch, torchvision
 import detectron2
+import numpy as np
 
 from detectron2.engine import DefaultPredictor
 from detectron2.data import MetadataCatalog
