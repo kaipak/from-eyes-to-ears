@@ -1,26 +1,21 @@
 import sounddevice
+import soundfile as sf
 from sound_maker import SoundMaker
 
-sq = SoundMaker(True)
+sq = SoundMaker()
 # Play sequentially car (Volume 3) then door (Volume 5)
-print(
-    sq.playsounds({
-        'truck': 3,
-        'door': 5
-    }, 1, False)
-)
+file, sounds = sq.playsounds([
+    {
+        'truck': 3
+    },
+    {
+        'cat': 2,
+        'person': 1
+    }
 
-# Play overlay 4 Cats at Volume 8
-print(
-    sq.playsounds({
-        'cat': 8
-    }, 4, True)
-)
+])
 
-sq = SoundMaker(False)
-# Play overlay 4 Cats at Volume 8
-print(
-    sq.playsounds({
-        'cat': 8
-    }, 4, True)
-)
+if file is not None:
+    data, fs = sf.read(file, dtype='float32')
+    sounddevice.play(data, fs)
+    status = sounddevice.wait()

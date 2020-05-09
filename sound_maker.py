@@ -1,5 +1,4 @@
 from lxml import html
-import soundfile as sf
 import requests
 import urllib.request
 from pydub import AudioSegment
@@ -24,7 +23,7 @@ class SoundMaker:
         combined = AudioSegment.empty()
         allsounds = list()
         for d in dics:
-            c, sounds = self.buildsounds(d, 1, True)
+            sounds, c = self.buildsounds(d, 1, True)
             combined += c
             allsounds.append(sounds)
 
@@ -75,7 +74,7 @@ class SoundMaker:
                 allsounds.append(os.path.basename(z))
                 gcount += 1
 
-        return (allsounds, combined)
+        return allsounds, combined
     
     def getsounds(self, tag, take=1):
         tag = tag.lower()
