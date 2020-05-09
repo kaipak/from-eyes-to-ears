@@ -17,11 +17,10 @@ This approach works best if your custom dataset does not contain classes similar
 So for example guitars and saxaphones seem to work pretty well, but tanks not as much (as they are to "similar" to a car and need a car class to be trained along with them to distinguish them)
 
 ## Citations
-Sound Bible for audio clip query (http://soundbible.com)
-Google Open Image Dataset for trianing and validation images (https://opensource.google/projects/open-images-dataset) [CC-by 4.0](LICENSE)
-Common Objects in Context for base classes and pre-trained model and validation (via Detectron2) (http://cocodataset.org/#home) [CC-by 4.0](LICENSE)
-Detectron2 is Facebook AI Research's deep learning platform for object recognition
-Detectron2 is released under the [Apache 2.0 license](LICENSE).
+ * Sound Bible for audio clip query (http://soundbible.com)
+ * Google Open Image Dataset for trianing and validation images (https://opensource.google/projects/open-images-dataset) [CC-by 4.0](LICENSE)
+ * Common Objects in Context for base classes and pre-trained model and validation (via Detectron2) (http://cocodataset.org/#home) [CC-by 4.0](LICENSE)
+ * Detectron2 is Facebook AI Research's deep learning platform for object recognition released under the [Apache 2.0 license](LICENSE).
 ### Citing Detectron2
 If you use Detectron2 in your research or wish to refer to the baseline results published in the [Model Zoo](MODEL_ZOO.md), please use the following BibTeX entry.
 ```BibTeX
