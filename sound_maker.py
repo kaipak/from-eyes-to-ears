@@ -19,63 +19,63 @@ class SoundMaker:
 
     def __init__(self, autoplay=False):
         self.autoplay=autoplay
-    
-    def playsounds(self, tags, take=1, overlay=False):
+
+    def playsounds(self, dics):
+        combined = AudioSegment.empty()
+        allsounds = list()
+        for d in dics:
+            c, sounds = self.buildsounds(d, 1, True)
+            combined += c
+            allsounds.append(sounds)
+
+        render = self.DIR + "/buffer.wav"
+        combined.export(render, format="wav")
+        render = render if os.path.exists(render) and len(allsounds) > 0 else None
+        return (render, allsounds)
+
+    def buildsounds(self, tags, take=1, overlay=False):
         gcount = 1
         if not os.path.exists(self.DIR):
             os.mkdir(self.DIR)
         allsounds = list()
+        combined = AudioSegment.empty()
         for k, v in tags.items():
             sounds = self.getsounds(k, take)
             volume = v
-            combined = AudioSegment.empty()
             for z in sounds:
                 ext = os.path.splitext(z)[1]
                 basefile = self.DIR + "/sb_" + str(gcount)
                 file = basefile + ext
                 sbyte = AudioSegment.empty()
-    
+
                 ### Sleep may be needed if ip starts getting blacklisted
                 ### for pinging the server too much
                 # if gcount > 1:
                 #     time.sleep(0.3)
-    
+
                 # simple clean to urlencode spaces... may be others
                 # TODO: Real URL encoding per component
                 z = z.replace(" ", "%20")
-    
+
                 urllib.request.urlretrieve(z, file)
                 if ext == ".mp3":
                     sbyte = AudioSegment.from_mp3(file)
                 elif ext == ".wav":
                     sbyte = AudioSegment.from_wav(file)
-    
+
                 else:
                     print("ERROR: Unknown audio type: " + ext)
                 sbyte = sbyte - 10 + int(volume / 1)
-    
+
                 if overlay:
                     combined = sbyte.overlay(combined)
                 else:
                     combined += sbyte
-    
+
                 allsounds.append(os.path.basename(z))
                 gcount += 1
-    
-            render = self.DIR + "/buffer.wav"
-            combined.export(render, format="wav")
-            # TODO maybe add other file types later
-            render = render if os.path.exists(render) and gcount > 1 else None
-            if self.autoplay and render is not None:
-                data, fs = sf.read(render, dtype='float32')
-                if 'sounddevice' not in sys.modules:
-                    print("Sound Device not imported, skipping playback.  Make sure to import like: 'import sounddevice'")
-                else:
-                    sounddevice.play(data, fs)
-                    status = sounddevice.wait()
-    
-        return (allsounds, render)
-    
+
+        return (allsounds, combined)
     
     def getsounds(self, tag, take=1):
         tag = tag.lower()
