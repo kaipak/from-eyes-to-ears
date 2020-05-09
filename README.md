@@ -13,21 +13,21 @@ sound_maker.py - sound query/blender library
 blended_predictor.py - generates a new predictor given the supplied base panoptic and custom mask r-cnn models
 
 ## How to use
- # use mask_training_data.ipynb to create a training, validation, and test dataset.
- ** code is tested to run on google colab
- ** GPU Acceleration is not needed for this notebook
- ** the first few cells (that define the phase and the files to download) should be adjusted/skipped based on the dataset being generated
- ** the final cell of the workbook should only be run once (when all datasets are complete to zip up the final data and upload to to GDrive 
- *** You will be prompted to authorize colab access to your GDrive
- # use From_Eyes_to_Ears.ipynb to trian and test the final model and sound generation
- ** Use the Chrom browser (safari is not fully supported)
- ** code is tested to run on google colab
- ** Ensure that the notebook is running in a GPU enabled environment
- ** You will need to download the data generated above from your GDrive to the new notebook environment
- ** Run all cells until you get to "Prediction Time" (if you run the next cell early it will fail)
- ** From here on you will run the next cells as many times as you want to "test"
- *** You will then get prompted to uplaod a test image for classification
- *** Run all cells to the end of the notebook and you will see the custom classification, default panoptic classification, blended classification and final generated audio
+1. use mask_training_data.ipynb to create a training, validation, and test dataset.
+  * code is tested to run on google colab
+  * GPU Acceleration is not needed for this notebook
+  * the first few cells (that define the phase and the files to download) should be adjusted/skipped based on the dataset being generated
+  * the final cell of the workbook should only be run once (when all datasets are complete to zip up the final data and upload to to GDrive 
+  ** You will be prompted to authorize colab access to your GDrive
+2. use From_Eyes_to_Ears.ipynb to trian and test the final model and sound generation
+  * Use the Chrom browser (safari is not fully supported)
+  * code is tested to run on google colab
+  * Ensure that the notebook is running in a GPU enabled environment
+  * You will need to download the data generated above from your GDrive to the new notebook environment
+  * Run all cells until you get to "Prediction Time" (if you run the next cell early it will fail)
+  * From here on you will run the next cells as many times as you want to "test"
+    * You will then get prompted to uplaod a test image for classification
+    * Run all cells to the end of the notebook and you will see the custom classification, default panoptic classification, blended classification and final generated audio
 
 ## Limitations of the approach
 This approach works best if your custom dataset does not contain classes similar to existing MS COCO classes (http://cocodataset.org/#explore) or you retrain the affected classes.  
