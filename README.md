@@ -13,7 +13,7 @@ sound_maker.py - sound query/blender library
 blended_predictor.py - generates a new predictor given the supplied base panoptic and custom mask r-cnn models
 
 ## How to use
- *  use mask_training_data.ipynb to create a training, validation, and test dataset.
+ * use mask_training_data.ipynb to create a training, validation, and test dataset.
    * code is tested to run on google colab
    * GPU Acceleration is not needed for this notebook
    * the first few cells (that define the phase and the files to download) should be adjusted/skipped based on the dataset being generated
